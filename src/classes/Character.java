@@ -32,6 +32,6 @@ abstract class Character implements Interactable, Speakable {
         System.out.println(name + " взаимодействует с другим объектом.");
     }
     public void visit(Place place) {
-        System.out.println(name + " посеил(а) место: " + place.getName());
+        System.out.println(name + " посетил(а) место: " + place.getName());
     }
 }
