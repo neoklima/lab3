@@ -1,0 +1,36 @@
+<project name="MyProject" default="build" basedir=".">
+    <!-- Установка свойств -->
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir" value="${build.dir}/jar"/>
+    <property name="jar.name" value="MyProject.jar"/>
+
+    <!-- Очистка выходных директорий -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <!-- Создание выходных директорий -->
+    <target name="init" depends="clean">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+    </target>
+
+    <!-- Компиляция исходного кода -->
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <!-- Создание JAR -->
+    <target name="jar" depends="compile">
+        <jar destfile="${jar.dir}/${jar.name}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="Main"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Главная цель для сборки проекта -->
+    <target name="build" depends="jar"/>
+</project>
