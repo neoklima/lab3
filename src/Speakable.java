@@ -1,3 +1,0 @@
-interface Speakable {
-    void speak();
-}
